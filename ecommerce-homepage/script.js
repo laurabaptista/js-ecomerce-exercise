@@ -32,8 +32,15 @@ const createProductCard = (product) => {
   const name = document.createElement("h2");
   name.textContent = product.title;
 
+  const addToCartButton = document.createElement("button");
+  addToCartButton.textContent = "Add to cart";
+  addToCartButton.addEventListener("click", () => {
+    console.log(`Clicked "Add to cart" for product id ${product.id}`);
+  });
+
   card.appendChild(image);
   card.appendChild(name);
+  card.appendChild(addToCartButton);
 
   return card;
 };
