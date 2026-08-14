@@ -1,3 +1,5 @@
+import { addProductToCart } from "./cart.js";
+
 const createPageTitle = () => {
   const title = document.createElement("h1");
   title.textContent = "Store";
@@ -18,7 +20,6 @@ const PRODUCTS_ENDPOINT = "https://fakestoreapi.com/products";
 const fetchProducts = async () => {
   const response = await fetch(PRODUCTS_ENDPOINT);
   const products = await response.json();
-  console.log(products);
   return products;
 };
 
@@ -35,7 +36,7 @@ const createProductCard = (product) => {
   const addToCartButton = document.createElement("button");
   addToCartButton.textContent = "Add to cart";
   addToCartButton.addEventListener("click", () => {
-    console.log(`Clicked "Add to cart" for product id ${product.id}`);
+    addProductToCart(product.id, 1);
   });
 
   card.appendChild(image);
