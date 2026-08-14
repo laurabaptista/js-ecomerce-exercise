@@ -37,6 +37,10 @@ const createProductCard = (product) => {
   name.textContent = product.title;
   name.classList.add("product-card__name");
 
+  const price = document.createElement("p");
+  price.textContent = `${product.price.toFixed(2)} EUR`;
+  price.classList.add("product-card__price");
+
   const addToCartButton = document.createElement("button");
   addToCartButton.textContent = "Add to cart";
   addToCartButton.classList.add("product-card__button");
@@ -46,6 +50,7 @@ const createProductCard = (product) => {
 
   card.appendChild(image);
   card.appendChild(name);
+  card.appendChild(price);
   card.appendChild(addToCartButton);
 
   return card;
