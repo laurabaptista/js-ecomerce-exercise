@@ -22,4 +22,31 @@ const fetchProducts = async () => {
   return products;
 };
 
-fetchProducts();
+const createProductCard = (product) => {
+  const card = document.createElement("article");
+
+  const image = document.createElement("img");
+  image.src = product.image;
+  image.alt = product.title;
+
+  const name = document.createElement("h2");
+  name.textContent = product.title;
+
+  card.appendChild(image);
+  card.appendChild(name);
+
+  return card;
+};
+
+const renderProductGrid = (products, container) => {
+  products.forEach((product) => {
+    const card = createProductCard(product);
+    container.appendChild(card);
+  });
+};
+
+const gridContainer = document.getElementById("product-grid");
+
+fetchProducts().then((products) => {
+  renderProductGrid(products, gridContainer);
+});
