@@ -9,6 +9,7 @@ const createPageTitle = () => {
 const createProductGridContainer = () => {
   const container = document.createElement("div");
   container.id = "product-grid";
+  container.classList.add("product-grid");
   return container;
 };
 
@@ -25,16 +26,20 @@ const fetchProducts = async () => {
 
 const createProductCard = (product) => {
   const card = document.createElement("article");
+  card.classList.add("product-card");
 
   const image = document.createElement("img");
   image.src = product.image;
   image.alt = product.title;
+  image.classList.add("product-card__image");
 
   const name = document.createElement("h2");
   name.textContent = product.title;
+  name.classList.add("product-card__name");
 
   const addToCartButton = document.createElement("button");
   addToCartButton.textContent = "Add to cart";
+  addToCartButton.classList.add("product-card__button");
   addToCartButton.addEventListener("click", () => {
     addProductToCart(product.id, 1);
   });
